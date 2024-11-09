@@ -1,23 +1,6 @@
 import pygame
 from constants import *
-
-
-def game_loop(screen):
-    clock = pygame.time.Clock()
-    dt = 0
-
-    running = True
-    while running:
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-
-        screen.fill("black")
-        pygame.display.flip()
-
-        dt = clock.tick(60) / 1000
-
-    pygame.quit()
+from player import Player
 
 
 def main():
@@ -26,9 +9,27 @@ def main():
     print(f"Screen height: {SCREEN_HEIGHT}")
 
     pygame.init()
+    clock = pygame.time.Clock()
+    dt = 0
+
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
-    game_loop(screen)
+    player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
+
+    running = True
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+
+        screen.fill("black")
+        player.draw(screen)
+
+        pygame.display.flip()
+
+        dt = clock.tick(60) / 1000
+
+    pygame.quit()
 
 
 if __name__ == "__main__":
