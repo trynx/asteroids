@@ -28,7 +28,7 @@ def main():
     Bullet.containers = (bullets, updatable, drawable)
 
     player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
-    asteroidField = AsteroidField()
+    AsteroidField()
 
     running = True
     while running:
